@@ -29,8 +29,8 @@ public class StringCalculator {
             numbers = numbers.substring(lastNewLine);
         }
         LOGGER.info("Modified Numbers: " + numbers);
-        delimiter = delimiter.replaceAll("[*,;]", "a");
-        numbers = numbers.replaceAll("[*,;]", "a");
+        delimiter = delimiter.replaceAll("[*,;%]", "a");
+        numbers = numbers.replaceAll("[*,;%]", "a");
         List<String> nums = Arrays.asList(numbers.split(delimiter));
         List<String> filteredNums = nums.stream().filter(num -> Integer.parseInt(num) < 0).toList();
         if(filteredNums.size() > 0) {
