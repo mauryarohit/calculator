@@ -31,4 +31,10 @@ public class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("1,2,3"));
     }
 
+    @Test
+    public void addForNewLine() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("1\n2,3"));
+    }
+
 }
