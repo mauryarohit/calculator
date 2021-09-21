@@ -2,6 +2,7 @@ import java.net.Inet4Address;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -25,11 +26,11 @@ public class StringCalculator {
         }
         LOGGER.info("Modified Numbers: " + numbers);
         List<String> nums = Arrays.asList(numbers.split(delimiter));
-        nums.stream().filter(num -> Integer.parseInt(num) < 0).findAny().ifPresent(
-                s -> {
-                    throw new IllegalArgumentException("Negative numbers not allowed");
-                }
-        );
+        List<String> filteredNums = nums.stream().filter(num -> Integer.parseInt(num) < 0).toList();
+        if(filteredNums.size() > 0) {
+            String message = String.join(",", filteredNums);
+            throw new IllegalArgumentException("Negative numbers not allowed: " + message);
+        }
         if(nums.size() == 1) {
             return Integer.parseInt(nums.get(0));
         }
