@@ -70,4 +70,10 @@ public class StringCalculatorTest {
         assertEquals(3, stringCalculator.add("//[***]\n1***2"));
     }
 
+    @Test
+    public void addForMultipleDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("//[*][%]\n1%2"));
+    }
+
 }
