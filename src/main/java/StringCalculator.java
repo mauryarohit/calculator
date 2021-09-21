@@ -11,14 +11,20 @@ public class StringCalculator {
         if(numbers.equals("")) {
             return 0;
         }
+        String delimiter = "";
         LOGGER.info("Original Numbers: " + numbers);
+        if(numbers.startsWith("\\")) {
+            delimiter = String.valueOf(numbers.charAt(1));
+        } else {
+            delimiter = ",";
+        }
         numbers = numbers.replaceAll("[\n]", "+");
         int lastNewLine = numbers.lastIndexOf('+');
         if(lastNewLine != -1) {
             numbers = numbers.substring(lastNewLine);
         }
         LOGGER.info("Modified Numbers: " + numbers);
-        List<String> nums = Arrays.asList(numbers.split(","));
+        List<String> nums = Arrays.asList(numbers.split(delimiter));
         if(nums.size() == 1) {
             return Integer.parseInt(nums.get(0));
         }
