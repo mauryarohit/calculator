@@ -25,4 +25,10 @@ public class StringCalculatorTest {
         assertEquals(3, actual, "Should add two numbers");
     }
 
+    @Test
+    public void addForMoreThanTwoNumbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("1,2,3"));
+    }
+
 }
