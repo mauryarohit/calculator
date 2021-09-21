@@ -18,4 +18,11 @@ public class StringCalculatorTest {
         assertEquals(1, actual, "Should handle single number.");
     }
 
+    @Test
+    public void addForTwoNumbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+        int actual = stringCalculator.add("1,2");
+        assertEquals(3, actual, "Should add two numbers");
+    }
+
 }
