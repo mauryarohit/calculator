@@ -37,4 +37,10 @@ public class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("1\n2,3"));
     }
 
+    @Test
+    public void addSupportForDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("\\;\n1;3"));
+    }
+
 }
