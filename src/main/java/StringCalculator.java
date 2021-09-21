@@ -17,6 +17,10 @@ public class StringCalculator {
             return Integer.parseInt(nums.get(0)) + Integer.parseInt(nums.get(1));
         }
 
+        if(nums.size() > 2) {
+            throw new IllegalArgumentException("More than 2 numbers are not allowed!");
+        }
+
         return -1;
     }
 
