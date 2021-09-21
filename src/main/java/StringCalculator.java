@@ -25,6 +25,11 @@ public class StringCalculator {
         }
         LOGGER.info("Modified Numbers: " + numbers);
         List<String> nums = Arrays.asList(numbers.split(delimiter));
+        nums.stream().filter(num -> Integer.parseInt(num) < 0).findAny().ifPresent(
+                s -> {
+                    throw new IllegalArgumentException("Negative numbers not allowed");
+                }
+        );
         if(nums.size() == 1) {
             return Integer.parseInt(nums.get(0));
         }
