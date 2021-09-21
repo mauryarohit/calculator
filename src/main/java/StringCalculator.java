@@ -1,8 +1,7 @@
-import java.net.Inet4Address;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -14,17 +13,24 @@ public class StringCalculator {
         }
         String delimiter = "";
         LOGGER.info("Original Numbers: " + numbers);
-        if(numbers.startsWith("\\")) {
-            delimiter = String.valueOf(numbers.charAt(1));
+        numbers = numbers.replaceAll("[\n]", "+");
+        if(numbers.startsWith("//")) {
+            if(numbers.charAt(2) == '[') {
+                delimiter = numbers.substring(numbers.indexOf("[")+1, numbers.indexOf("]"));
+            } else {
+                delimiter = String.valueOf(numbers.charAt(1));
+            }
         } else {
             delimiter = ",";
         }
-        numbers = numbers.replaceAll("[\n]", "+");
+        LOGGER.info("Delimiter:" + delimiter);
         int lastNewLine = numbers.lastIndexOf('+');
         if(lastNewLine != -1) {
             numbers = numbers.substring(lastNewLine);
         }
         LOGGER.info("Modified Numbers: " + numbers);
+        delimiter = delimiter.replaceAll("[*,;]", "a");
+        numbers = numbers.replaceAll("[*,;]", "a");
         List<String> nums = Arrays.asList(numbers.split(delimiter));
         List<String> filteredNums = nums.stream().filter(num -> Integer.parseInt(num) < 0).toList();
         if(filteredNums.size() > 0) {
