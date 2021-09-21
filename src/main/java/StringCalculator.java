@@ -36,7 +36,9 @@ public class StringCalculator {
         }
         
         if(nums.size() == 2) {
-            return Integer.parseInt(nums.get(0)) + Integer.parseInt(nums.get(1));
+            int result = nums.stream().mapToInt(Integer::parseInt).
+                    filter(number -> number < 1000).sum();
+            return result;
         }
 
         if(nums.size() > 2) {
