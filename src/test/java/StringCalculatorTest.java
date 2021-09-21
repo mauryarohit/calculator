@@ -59,9 +59,15 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void addForNUmbersBiggerThanThousand() {
+    public void addForNumbersBiggerThanThousand() {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(2, stringCalculator.add("2,1000"),"Numbers bigger than 1000 should be ignored.");
+    }
+
+    @Test
+    public void addForDifferentSizeDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("//[***]\n1***2"));
     }
 
 }
