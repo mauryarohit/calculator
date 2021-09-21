@@ -54,4 +54,8 @@ public class StringCalculator {
         return -1;
     }
 
+    public int getCalledCount() {
+        return 0;
+    }
+
 }
